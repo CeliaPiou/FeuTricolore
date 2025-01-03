@@ -3,6 +3,7 @@ body {
     transition: all 1s ease-in-out;
     background: rgb(237,77,0);
     background: linear-gradient(90deg, rgba(237,77,0,1) 6%, rgba(255,190,0,1) 98%);
+    font-family: 'Jost';
 }
 
 article {
@@ -38,9 +39,15 @@ article {
 
             input {
                 background-color: transparent;
-                border:1px solid orange;
+                border:1px solid rgb(255, 102, 0);
                 padding: 5px 15px 5px 15px;
                 border-radius: 10px;
+                transition: all 0.5s ease-in-out;
+            }
+
+            input:hover {
+                background-color: rgb(255, 102, 0);
+                cursor: pointer;
             }
         }
     }
@@ -62,8 +69,7 @@ article {
             align-items: center;
 
             #rouge, #orange, #vert {
-                border:1px solid white;
-                background-color: grey;
+                background-color: rgb(158, 158, 158);
                 height:25%;
                 aspect-ratio: 1/1;
                 border-radius: 100px;
@@ -85,10 +91,16 @@ article {
         #right-side {
             #feu {
                 transform: scale(1.1);
+                max-height:50vh;
             }
             #tige {
-                display:none;
+                display: none;
             }
+        }
+
+        #left-side {
+            width:80vw;
+            max-width: 400px;
         }
     }
 }
