@@ -5,6 +5,7 @@ let feuVert = document.getElementById('vert')
 let buttonSwitch = document.getElementById('automatic-mode-button');
 buttonSwitch.style.backgroundColor = "rgb(226, 4, 4)";
 let nextColor = document.getElementById('next-color');
+const carrousel = document.querySelector('section');
 
 let isTrue = false;
 let intervall;
@@ -41,6 +42,10 @@ buttonSwitch.addEventListener('click', () => {
 
         // Cache le bouton pour changer manuellement
         nextColor.style.display = "inline";
+
+        //Cesse le défilé de voitures
+        carrousel.style.display = "none";
+
     }
 
     else {
@@ -52,24 +57,29 @@ buttonSwitch.addEventListener('click', () => {
         intervall = setInterval(() => {
 
             if (feuRouge.style.backgroundColor === "rgb(226, 4, 4)") {
-                // Si c'est Rouge, ça change au Orange
+                // Si c'est Rouge, ça change au Vert
                 feuRouge.style.backgroundColor = "rgb(158, 158, 158)";
-                feuOrange.style.backgroundColor = "rgb(255, 102, 0)";
+                feuVert.style.backgroundColor = "rgb(7, 158, 7)";
+                carrousel.style.display = "inline";
             }
 
             else if (feuOrange.style.backgroundColor === "rgb(255, 102, 0)") {
-                // Si c'est Orange, ça change au Vert
+                // Si c'est Orange, ça change au Rouge
                 feuOrange.style.backgroundColor = "rgb(158, 158, 158)";
-                feuVert.style.backgroundColor = "rgb(7, 158, 7)";
+                feuRouge.style.backgroundColor = "rgb(226, 4, 4)";
+                carrousel.style.display = "none";
+
             }
 
             else {
-                // Ben autre cas de figure donc, si c'est Vert, ça change au Rouge
+                // Ben autre cas de figure donc, si c'est Vert, ça change au Orange
                 feuVert.style.backgroundColor = "rgb(158, 158, 158)";
-                feuRouge.style.backgroundColor = "rgb(226, 4, 4)";
+                feuOrange.style.backgroundColor = "rgb(255, 102, 0)";
+                carrousel.style.display = "inline";
+
             }
 
-        }, 500)
+        }, 3000)
 
         // Change le contenu du bouton
         buttonSwitch.value = "Mode Auto Activé"
@@ -79,23 +89,27 @@ buttonSwitch.addEventListener('click', () => {
     }
 })
 
+// Quand j'appuie sur le bouton pour changer manuellement la couleur
 nextColor.addEventListener('click', () => {
-    // Si le rouge est déjà activé, mets le orange
+    // Si le rouge est déjà activé, mets le vert
     if (feuRouge.style.backgroundColor === "rgb(226, 4, 4)") {
         feuRouge.style.backgroundColor = "rgb(158, 158, 158)";
-        feuOrange.style.backgroundColor = "rgb(255, 102, 0)";
+        feuVert.style.backgroundColor = "rgb(7, 158, 7)";
+        carrousel.style.display = "inline";
     }
     // Si le orange est déjà activé, mets le vert
     else if (feuOrange.style.backgroundColor === "rgb(255, 102, 0)") {
-        // Si c'est Orange, ça change au Vert
+        // Si c'est Orange, ça change au Rouge
         feuOrange.style.backgroundColor = "rgb(158, 158, 158)";
-        feuVert.style.backgroundColor = "rgb(7, 158, 7)";
+        feuRouge.style.backgroundColor = "rgb(226, 4, 4)";
+        carrousel.style.display = "none";
     }
 
-    // Dernier cas de figure, si le vert est activé, mets le rouge
+    // Dernier cas de figure, si le vert est activé, mets le orange
     else {
         // Ben autre cas de figure donc, si c'est Vert, ça change au Rouge
         feuVert.style.backgroundColor = "rgb(158, 158, 158)";
-        feuRouge.style.backgroundColor = "rgb(226, 4, 4)";
+        feuOrange.style.backgroundColor = "rgb(255, 102, 0)";
+        carrousel.style.display = "inline";
     }
 })

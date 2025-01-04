@@ -4,6 +4,91 @@ body {
     background: rgb(237,77,0);
     background: linear-gradient(90deg, rgba(237,77,0,1) 6%, rgba(255,190,0,1) 98%);
     font-family: 'Jost';
+    height:100vh;
+}
+
+/* Voitures & animations -------------------- */
+
+section {
+    display: none;
+    position:absolute;
+    bottom: 0px;
+    left: 0;
+    width:100vw;
+    overflow-x: hidden;    
+    overflow-y: hidden;
+    transition: all 1s ease-in-out;
+
+    #green-car {
+        position: absolute;
+        bottom:-30px;
+        left: -50vw;
+    }
+    #purple-car {
+        filter: hue-rotate(-180deg);
+        position: absolute;
+        bottom:-40px;
+        left: 100vw;
+    }
+    #pink-car {
+        filter: hue-rotate(-90deg);
+        position: absolute;
+        bottom:30px;
+        left: 100vw;
+    }
+}
+
+.vroom {
+    animation-name: vroom;
+    animation-duration: 8s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes vroom {
+    from {
+        transform: translateX(-100vw);
+    }
+    to {
+        transform: translateX(100vw);
+    }
+}
+
+.vroom-vroom {
+    animation-name: vroom-vroom;
+    animation-delay:0.5s;
+    animation-duration: 7s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes vroom-vroom {
+    from {
+        transform: translateX(-100vw);
+    }
+    to {
+        transform: translateX(150vw);
+    }
+}
+
+.vroom-backwards {
+    animation-name: vroom-backwards;
+    animation-delay:1s;
+    animation-duration: 7s;
+    animation-iteration-count: infinite;
+}
+
+.vroom-vroom-backwards {
+    animation-name: vroom-backwards;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes vroom-backwards {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-150vw);
+    }
 }
 
 article {
@@ -44,6 +129,7 @@ article {
                 border-radius: 10px;
                 transition: all 0.5s ease-in-out;
                 margin-top: 10px;
+                font-family: 'jost';
 
             }
 
@@ -80,20 +166,26 @@ article {
 
         #tige {
             background-color: #262626;
-            height:250px;
+            height:200px;
             width:50px;
+            border-bottom-right-radius: 50px;
+            /* border-bottom-left-radius: 50px; */
         }
     }
 }
 
 @media screen and (max-width:1000px) {
     article {
-        flex-direction: column;
+        flex-direction: column-reverse;
+        justify-content: top;
 
         #right-side {
+            height:50vh;
+            margin-top: -200px;
             #feu {
                 transform: scale(1.1);
                 max-height:50vh;
+                margin-bottom: 80px;
             }
             #tige {
                 display: none;
@@ -103,6 +195,7 @@ article {
         #left-side {
             width:80vw;
             max-width: 400px;
+            margin-top: -100px;
             flex-direction: column;
             align-items: center;
             text-align:center;
@@ -110,6 +203,24 @@ article {
             #bar {
                 width:100px;
                 height:1.5px;
+            }
+        }
+    }
+}
+
+@media screen and (max-height:750px) {
+
+    article {
+        #right-side {
+            #feu {
+                flex-direction: row;
+                width: 70vw;
+                height:60px;
+
+                #rouge, #orange, #vert {
+                    height:50%;
+                    aspect-ratio: 1/1;
+                }
             }
         }
     }
